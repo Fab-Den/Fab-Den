@@ -1,0 +1,13 @@
+{
+    "token": "ODU4OTY0MzQ5NTI4MDQ3NjM2.YNly4w.LhsIcjNwNffKoXiHVBj0Kk7AeDA",
+    "prefix": "%",
+    "guild_id": "858963788563742750",
+
+    "db_user": "admin",
+    "db_password": "admin",
+    "db_host": "192.168.43.53",
+    "db_port": 3308,
+    "db_database": "discord"
+
+    
+}

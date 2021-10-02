@@ -1,0 +1,35 @@
+{
+    "commands":
+    [
+        {
+            "command": "a",
+            "description": "",
+            "access": ["0000"]
+        },
+        {
+            "command": "b",
+            "description": "",
+            "access": ["0000"]
+        },
+        {
+            "command": "c",
+            "description": "",
+            "access": ["0000"]
+        },
+        {
+            "command": "d",
+            "description": "",
+            "access": ["0000"]
+        },
+        {
+            "command": "e",
+            "description": "",
+            "access": ["0000"]
+        },
+        {
+            "command": "f",
+            "description": "",
+            "access": ["0000"]
+        }
+    ]
+}
