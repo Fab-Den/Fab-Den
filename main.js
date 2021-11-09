@@ -42,7 +42,8 @@ client.on("ready", () =>{
     guild = client.guilds.cache.get(config.guild_id)
     console.log("Guild found : " + guild.name)
 
-   linkModule.updateRankRole(guild)
+    setInterval(linkModule.updateRankRole, 5000, guild)
+   //linkModule.updateRankRole(guild)
 
 
     // ----- generate help embeds ----- (for a next version)
@@ -103,7 +104,7 @@ client.on('messageCreate', msg => {
             cmd.execute(client, msg, args)
         }
     }
-    setInterval(linkModule.updateRankRole)
+
 
     /*
     let msg = message.content;
