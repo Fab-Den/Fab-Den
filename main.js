@@ -18,7 +18,7 @@ const config = require('./json/config.json');
 const lang = require('./json/lang.json');
 const help = require('./json/help.json')
 
-
+const linkModule = require("./modules/link.js")
 
 const help_embeds = [];
 
@@ -27,9 +27,12 @@ client.commands = new Discord.Collection()
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command);
+    console.log(command)
+    if (config.persmissions[command.name]){
+        client.commands.set(command.name, command);
+    }
 }
-
+console.log(client.commands)
 console.log(client.commands.length + " commands loaded.")
 
 // Client events
@@ -38,6 +41,9 @@ client.on("ready", () =>{
     console.log(config.guild_id)
     guild = client.guilds.cache.get(config.guild_id)
     console.log("Guild found : " + guild.name)
+
+   linkModule.updateRankRole(guild)
+
 
     // ----- generate help embeds ----- (for a next version)
     /*
@@ -74,7 +80,32 @@ client.on("ready", () =>{
 })
 
 
-client.on('messageCreate', message => {
+client.on('messageCreate', msg => {
+    if (!msg.content.startsWith(config.prefix) || msg.author.bot)
+        return;
+
+    const args = msg.content.slice(config.prefix.length).trim().split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    const cmd = client.commands.find(cmd => cmd.name === command)
+
+    if (cmd !== undefined){
+        let roles = msg.member.roles.cache.map(role => role.id)
+
+        bHasPerm = function(){
+            if(config.persmissions[command].length == 0) return true;
+            const filteredArray = roles.filter(role => config.persmissions[command].includes(role));
+            if(filteredArray.length>0)return true; else return false;
+        }
+        
+        if(bHasPerm()){
+            console.log(`[discord][cmd_dispatcher] ${msg.author.username}[${msg.author}] invoked {${cmd.name} | ${cmd.description}}`); 
+            cmd.execute(client, msg, args)
+        }
+    }
+    setInterval(linkModule.updateRankRole)
+
+    /*
     let msg = message.content;
     console.log(msg);
     if (msg[0] == config.prefix && msg.length>1){
@@ -88,11 +119,8 @@ client.on('messageCreate', message => {
 
         switch (command) {
           
-            case "test2":
-                channel = guild.channels.cache.get('859045321610100746');
-                console.log(help_embeds)
-                channel.send({embeds: [help_embeds[0]]})
-                break;
+            case "unlink":*/
+
 
             // For a next version, coupled with the "on interationCreate"
             /*
@@ -124,11 +152,11 @@ client.on('messageCreate', message => {
                 
                 break;
             */
-
+            /*
             default:
                 break;
         }
-    }
+    }*/
 })
 
 

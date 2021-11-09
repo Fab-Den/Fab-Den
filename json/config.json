@@ -1,13 +1,28 @@
 {
-    "token": "ODU4OTY0MzQ5NTI4MDQ3NjM2.YNly4w.LhsIcjNwNffKoXiHVBj0Kk7AeDA",
+    "token": "ODU4OTY0MzQ5NTI4MDQ3NjM2.YNly4w.qfTCyQJIElkAZesG_wXPr7Mppq0",
     "prefix": "%",
     "guild_id": "858963788563742750",
 
-    "db_user": "admin",
-    "db_password": "admin",
-    "db_host": "192.168.43.53",
-    "db_port": 3308,
-    "db_database": "discord"
+    "db_user": "root",
+    "db_password": "mariadb",
+    "db_host": "localhost",
+    "db_port": 3307,
+    "db_database": "discord",
 
+    "persmissions":
+    {
+        "unlink": ["859045846472327199"],
+        "link": []
+    },
+
+    "roles":
+    {
+        "Membre": "859046615749623819",
+        "VIP": "859046580551942144",
+        "VIP+": "859046551049207828",
+        "FVIP": "859046519662837770"
+    },
+    "visitor_role": "859046678132949022",
+    "role_order": ["Membre", "VIP", "VIP+", "FVIP"]
     
 }

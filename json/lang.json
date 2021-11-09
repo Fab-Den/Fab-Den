@@ -2,6 +2,9 @@
     "help_embde_title":0,
     "help_embed_description":0,
     "help_embed_thumbnail":0,
-    "help_embed_color":0
+    "help_embed_color":0,
+
+    "link_already_linked":"Votre compte discord est déjà lié à un profil minecraft.\nUtilisez la commande %unlink pour les dissocier.",
+    "link_link_code": "Entrez la commande /blabla [code] avec le code suivant en jeu pour lier votre compte discord à votre profil minecraft."
 
 }

@@ -9,6 +9,10 @@ client.on('message', function(msg) {
     if (!msg.member.roles.cache.get(permissions.admin) && !permissions.bypass.includes(command))
         return;
   
+
+
+
+        
     // aucune idée de pourquoi j'ai fait un truc compliqué qui passe par des Promise alors que ça sert à rien
     // def getCmd qui va chercher la commande (command) ds les registered cmds (client.commands)
     const getCmd = function(client, command) {
