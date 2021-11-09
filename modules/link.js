@@ -148,9 +148,8 @@ async function link(sDiscordId){
 
 
 async function updateRankRole(guild){
-	let oConn;
-	try {
-		oConn = await pool.getConnection();
+	console.log("Launching of updateRankRole")
+	pool.getConnection().then(oConn => async function(){
 
 		dRolesInConfig = {}
 
@@ -208,12 +207,7 @@ async function updateRankRole(guild){
 			}
 		});
 
-
-
-	} catch (error) {
-		console.log(error)
-	}
-
+	}())
 }
 
 
